@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import Popup from "./Popup";
 
 function Form() {
+
+    const [popup, setPopup] = useState(false)
 
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
@@ -26,13 +29,20 @@ function Form() {
             Number: number,
             Address: address,
             Fever_Chills: fever,
+            Cough: cough,
             Sore_Throat: throat,
             Shortness_of_Breath: breath,
             Loss_of_Smell_Taste: smell,
             Body_Ache: body,
             Fatigue: fatigue,
             Nausea: nausea,
+            
         }
+
+        
+
+        setPopup(true)
+
         axios.post("https://sheet.best/api/sheets/19f2bc76-e401-4732-864a-ed9ea972112c", data).then(
             (response)=> {
                 console.log(response)
@@ -54,9 +64,11 @@ function Form() {
         )
     }
 
+    // const [popup, setPopup] = useState(false)
+
     return (
         <div className=" mx-4 pl-4 mb-5 ">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className = " z-0 ">
                 <h1 className=" font-extralight text-2xl py-2 ">Personal Contact Details</h1>
                 <div className=" flex-col font-light text-gray-700 text-[16px] ">
                     <div className=" flex py-2 j ">
@@ -127,14 +139,16 @@ function Form() {
                 <p className=" font-light text-gray-700 text-[16px] pb-3 ">According to the current Level-1 regulations for religious gatherings, you are required to wear a face mask covering your mouth and nose throughout the service, and to observe social distancing of 1.5m at all times. In order to register for the service, you need to agree to observe these restrictions below:</p>
 
                 <div className=" flex items-center pb-3 ">
-                    <input type="checkbox" className=" mx-3 " name="agree" required/>
+                    <div><input type="checkbox" className=" mx-3 w-[13px] h-[13px] " name="agree" required/></div>
                     <p className=" font-light text-gray-700 text-[16px] ">Yes, I agree to wear my face mask throughout the service, and to observe social distancing of 1.5m</p>
                 </div>
 
                 
-                <button className=" bg-[#a3a3a3] p-3 rounded-md ring-gray-200 text-sm text-white hover:ring-1 focus:outline-none active:bg-[#c44a04] hover:shadow-md " type="submit" > Submit</button>
+                <button className=" bg-[#a3a3a3] p-3 rounded-md ring-gray-200 text-sm text-white hover:ring-1 focus:outline-none active:bg-[#c44a04] hover:shadow-md " type="submit"  > Submit</button>
                 
             </form>
+            <Popup className="" trigger={popup} setTrigger={setPopup}><h3>Submitted</h3></Popup>
+            
         </div>
     )
 }

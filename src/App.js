@@ -2,13 +2,12 @@ import './App.css';
 import logo from './images/logo.png';
 import banner from "./images/banner.png";
 import Form from "./Form";
-import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div className=" flex justify-center ">
-      <div className=" max-w-[1500px]  ">
-        <div className=" max-w-full w-[100vw] h-full text-[20px] overflow-y-hidden overflow-x-hidden  ">
+      <div className=" max-w-[1500px] ">
+        <div className=" max-w-full w-[100vw] h-full text-[20px] overflow-y-hidden overflow-x-hidden z-0 relative  ">
           <div className=" text-gray-400 text-sm py-2 border border-b-[1px] border-gray-200 font-semibold mb-3 flex justify-center md:justify-start border-l-0 border-r-0 ">
             <h1 className=" md:ml-[50px] ">SUNDAY SERVICE REGISTRATION</h1>
           </div>
@@ -33,7 +32,6 @@ function App() {
               <h1 className=" hover:text-red-500 "><a href="https://joburgnorthchristianchurch.org/contacts-us/">CONTACT</a></h1>
             </div>
           <img src={banner} alt="" className=" ml-2 w-[100vw] max-h-[400px] my-4 "/>
-
           <Form />
         </div>
       </div>
